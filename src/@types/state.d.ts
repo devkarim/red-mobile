@@ -1,3 +1,3 @@
 interface LocalState {
-  token?: string;
+  token: string | null;
 }

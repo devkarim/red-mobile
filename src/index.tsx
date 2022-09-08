@@ -3,8 +3,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux';
 
 import SplashScreen from './pages/splash';
-import LoginScreen from './pages/auth/login';
-import SignupScreen from './pages/auth/signup';
 import MainScreen from './pages/main';
 import store from './state/store';
 import { useColorScheme } from 'react-native';
@@ -38,8 +36,6 @@ const Root = () => {
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="splash" component={SplashScreen} />
-          <Stack.Screen name="login" component={LoginScreen} />
-          <Stack.Screen name="signup" component={SignupScreen} />
           <Stack.Screen name="main" component={MainScreen} />
         </Stack.Navigator>
       </NavigationContainer>
