@@ -1,11 +1,11 @@
 import { View } from 'react-native';
 import React from 'react';
-import Txt from '../components/ui/Txt';
+import Logo from 'src/components/ui/Logo';
 
 const SplashScreen = () => {
   return (
     <View>
-      <Txt>SplashScreen</Txt>
+      <Logo />
     </View>
   );
 };

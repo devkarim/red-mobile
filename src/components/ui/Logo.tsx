@@ -1,3 +1,3 @@
-// import Logo from '../../../assets/svg/logo.svg';
+import Logo from '@assets/svg/red-opened-eyes.svg';
 
-// export default Logo;
+export default Logo;
