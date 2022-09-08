@@ -32,11 +32,11 @@ const Root = () => {
         theme={colorScheme == 'dark' ? darkTheme : lightTheme}
       >
         <Stack.Navigator
-          initialRouteName="splash"
+          initialRouteName="/splash"
           screenOptions={{ headerShown: false }}
         >
-          <Stack.Screen name="splash" component={SplashScreen} />
-          <Stack.Screen name="main" component={MainScreen} />
+          <Stack.Screen name="/splash" component={SplashScreen} />
+          <Stack.Screen name="/main" component={MainScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
