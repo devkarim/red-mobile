@@ -5,8 +5,12 @@ import Txt from '../../components/ui/Txt';
 import tw from '../../lib/tailwind';
 import Palette from '../../config/palette';
 import HomeScreen from './home';
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { APP_NAME } from '../../config/constants';
+import MenuScreen from './menu';
+import AllMatchesScreen from './allMatches';
+import AllPrayerScreen from './allPrayers';
+import CalendarScreen from './calendar';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,10 +31,12 @@ const MainScreen = () => {
                 </View>
               )
             : undefined,
-        // headerShown: Platform.OS == 'ios',
+        tabBarStyle: tw`rounded-2xl bg-primary-dark my-8 mx-4`,
+        tabBarItemStyle: tw`mt-[25&]`,
         headerShown: false,
-        headerTintColor: Palette.PRIMARY,
-        tabBarActiveTintColor: Palette.PRIMARY,
+        tabBarActiveTintColor: Palette.DARK,
+        tabBarInactiveTintColor: Palette.INACTIVE_DARK,
+        tabBarShowLabel: false,
       }}
     >
       <Tab.Screen
@@ -39,6 +45,42 @@ const MainScreen = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Prayers"
+        component={AllPrayerScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="pray" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="AllMatches"
+        component={AllMatchesScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="football" size={26} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Calendar"
+        component={CalendarScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="calendar" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Menu"
+        component={MenuScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <FontAwesome5 name="bars" size={24} color={color} />
           ),
         }}
       />
