@@ -8,7 +8,6 @@ const HorizontalLine: React.FC<HorizontalLineProps> = ({ style, ...props }) => {
 
   return (
     <View
-      {...props}
       style={{
         borderBottomColor: textColor,
         borderBottomWidth: 0.8,
@@ -18,6 +17,7 @@ const HorizontalLine: React.FC<HorizontalLineProps> = ({ style, ...props }) => {
         marginVertical: 16,
         ...(style as any),
       }}
+      {...props}
     />
   );
 };

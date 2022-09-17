@@ -1,12 +1,12 @@
 import React from 'react';
 import Txt from '../../components/ui/Txt';
-import Container from '../../components/ui/Container';
+import SafeArea from '../../layout/SafeArea';
 
 const CalendarScreen = () => {
   return (
-    <Container>
+    <SafeArea>
       <Txt>CalendarScreen</Txt>
-    </Container>
+    </SafeArea>
   );
 };
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import { SafeAreaView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { SafeAreaViewProps } from 'react-native-safe-area-context';
-import tw from '../../lib/tailwind';
-import NativeKeyboardAvoiding from './NativeKeyboardAvoiding';
+import tw from '../lib/tailwind';
+import NativeKeyboardAvoiding from '../components/ui/NativeKeyboardAvoiding';
 
-export interface ContainerProps extends SafeAreaViewProps {
+export interface SafeAreaProps extends SafeAreaViewProps {
   centerScreen?: boolean;
   behavior?: KeyboardingAvoidingViewBehavior;
   noKeyboardAvoiding?: boolean;
 }
 
-const Container: React.FC<ContainerProps> = ({
+const SafeArea: React.FC<SafeAreaProps> = ({
   children,
   behavior,
   centerScreen,
@@ -42,4 +42,4 @@ const Container: React.FC<ContainerProps> = ({
   );
 };
 
-export default Container;
+export default SafeArea;

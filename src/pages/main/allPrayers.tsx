@@ -1,12 +1,12 @@
 import React from 'react';
 import Txt from '../../components/ui/Txt';
-import Container from '../../components/ui/Container';
+import SafeArea from '../../layout/SafeArea';
 
 const AllPrayerScreen = () => {
   return (
-    <Container>
+    <SafeArea>
       <Txt>AllPrayerScreen</Txt>
-    </Container>
+    </SafeArea>
   );
 };
 

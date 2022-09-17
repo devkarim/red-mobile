@@ -1,10 +1,10 @@
 import { View } from 'react-native';
 import tw from '../../lib/tailwind';
-import Container, { ContainerProps } from '../ui/Container';
+import SafeArea, { SafeAreaProps } from '../../layout/SafeArea';
 import Txt from '../ui/Txt';
 import BackButton from '../ui/BackButton';
 
-interface ErrorScreenProps extends ContainerProps {
+interface ErrorScreenProps extends SafeAreaProps {
   message: string;
   backButton?: boolean;
 }
@@ -16,7 +16,7 @@ const ErrorScreen: React.FC<ErrorScreenProps> = ({
   ...props
 }) => {
   return (
-    <Container {...props}>
+    <SafeArea {...props}>
       {backButton ? <BackButton iconStyle={tw`mt-5 self-start`} /> : null}
       <View
         style={{
@@ -31,7 +31,7 @@ const ErrorScreen: React.FC<ErrorScreenProps> = ({
         <Txt style={tw`font-light text-center`}>{message}</Txt>
         {children}
       </View>
-    </Container>
+    </SafeArea>
   );
 };
 

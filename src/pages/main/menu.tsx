@@ -1,12 +1,12 @@
 import React from 'react';
 import Txt from '../../components/ui/Txt';
-import Container from '../../components/ui/Container';
+import SafeArea from '../../layout/SafeArea';
 
 const MenuScreen = () => {
   return (
-    <Container>
+    <SafeArea>
       <Txt>MenuScreen</Txt>
-    </Container>
+    </SafeArea>
   );
 };
 

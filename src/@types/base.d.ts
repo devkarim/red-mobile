@@ -8,3 +8,5 @@ type ErrorMessage = {
 interface ApiErrors {
   errors: ErrorMessage[];
 }
+
+type SpaceSize = 'sm' | 'base' | 'md' | 'lg' | 'xl';
