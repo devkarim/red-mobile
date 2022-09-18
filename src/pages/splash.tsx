@@ -8,21 +8,49 @@ import useStackNavigation from '@src/helpers/hooks/useStackNavigation';
 import { useEffect } from 'react';
 import { debug } from '../helpers/utils';
 import { useAppDispatch } from '../state/hooks';
-import { setLocation } from '../state/reducers/local';
+import { saveLocation } from '../state/reducers/local';
 import * as Location from 'expo-location';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { LAST_UPDATED_STORAGE_KEY, LOC_STORAGE_KEY } from '../config/storage';
 
 const SplashScreen = () => {
   const { replaceTimeout } = useStackNavigation();
 
   const dispatch = useAppDispatch();
 
+  const checkLastUpdate = async () => {
+    const [loc, lastUpdated] = await AsyncStorage.multiGet([
+      LOC_STORAGE_KEY,
+      LAST_UPDATED_STORAGE_KEY,
+    ]);
+    const timestampNow = Date.now();
+    const lastUpdatedAt = Number.MAX_VALUE;
+
+    debug('Get loc from storage', loc);
+    debug('Get lastUpdated from storage', lastUpdated);
+
+    // Check if last updated was 1d ago
+    if (loc && loc[1] && timestampNow - lastUpdatedAt > 24 * 60 * 60 * 1000) {
+      debug(
+        'Last updated was less than 1d, using local data instead...',
+        lastUpdated
+      );
+      await dispatch(saveLocation(JSON.parse(loc[1]), lastUpdatedAt));
+      return false;
+    }
+    return true;
+  };
+
   const fetchLocation = async () => {
+    const canUpdate = await checkLastUpdate();
+    if (!canUpdate) return;
+
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') return;
 
     let location = await Location.getCurrentPositionAsync({});
-    debug('Set location', location);
-    dispatch(setLocation(location));
+    debug('Set new location', location);
+    await dispatch(saveLocation(location));
   };
 
   const load = async () => {
