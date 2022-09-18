@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import Txt from '../../../components/ui/Txt';
 import Container from '../../../layout/Container';
 import Space from '../../../layout/Space';
@@ -13,7 +12,7 @@ const WeatherColumn: React.FC<WeatherColumnProps> = ({ time, degree }) => {
   return (
     <Container style={tw`items-center`}>
       <Txt>{time}</Txt>
-      <Space size="sm" />
+      <Space />
       <Txt>{`${degree}°C`}</Txt>
     </Container>
   );

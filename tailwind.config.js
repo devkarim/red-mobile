@@ -12,7 +12,7 @@ module.exports = {
           DEFAULT: '#ff3838',
         },
         inactive: {
-          light: 'rgba(255, 255, 255, 0.6)',
+          light: 'rgba(255, 255, 255, 0.65)',
           dark: 'rgba(212, 212, 212, 0.4)',
         },
       },

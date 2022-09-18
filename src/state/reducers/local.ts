@@ -1,8 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LocationObject } from 'expo-location';
+import { LocalState } from '../../models/state';
 import { AppThunk } from '../store';
 
 const initialState: LocalState = {
   token: null,
+  location: null,
 };
 
 const localState = createSlice({
@@ -11,6 +14,9 @@ const localState = createSlice({
   reducers: {
     setToken(state, action: PayloadAction<string | null>) {
       state.token = action.payload;
+    },
+    setLocation(state, action: PayloadAction<LocationObject | null>) {
+      state.location = action.payload;
     },
   },
 });
@@ -34,6 +40,6 @@ export const logout = (): AppThunk => async (dispatch) => {
   dispatch(setToken(null));
 };
 
-export const { setToken } = localState.actions;
+export const { setToken, setLocation } = localState.actions;
 
 export default localState.reducer;

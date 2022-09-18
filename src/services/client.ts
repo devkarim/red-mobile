@@ -4,6 +4,7 @@ import { API_URL } from '../config/constants';
 
 const client = axios.create({
   baseURL: API_URL,
+  responseType: 'json',
 });
 
 export default client;

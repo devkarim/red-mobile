@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import Card from '../../../components/ui/Card';
 import Container from '../../../layout/Container';
 import HSpace from '../../../layout/HSpace';
-import Space from '../../../layout/Space';
 import tw from '../../../lib/tailwind';
 import WeatherColumn from './WeatherColumn';
 

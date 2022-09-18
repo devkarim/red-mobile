@@ -1,8 +1,8 @@
-# Red-Mobile
+# Red Mobile Application
 
 ## Summary
 
-Red Mobile is an assistant to keep you reminded and help with daily tasks.
+Red is an assistant to keep you reminded and help with daily tasks.
 
 ## Getting Started
 
@@ -14,4 +14,4 @@ To get started, do the following:
 
 ## License
 
-GNU General Public License v3.0 or later. Check [this](https://github.com/devkarim/red-mobile/blob/main/LICENSE.md) for more info.
+Under [MIT](https://github.com/devkarim/red-mobile/blob/main/LICENSE.md) license.
