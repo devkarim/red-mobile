@@ -30,7 +30,7 @@ const SplashScreen = () => {
     debug('Get lastUpdated from storage', lastUpdated);
 
     // Check if last updated was 1d ago
-    if (loc && loc[1] && timestampNow - lastUpdatedAt > 24 * 60 * 60 * 1000) {
+    if (loc && loc[1] && timestampNow - lastUpdatedAt < 24 * 60 * 60 * 1000) {
       debug(
         'Last updated was less than 1d, using local data instead...',
         lastUpdated

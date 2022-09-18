@@ -9,7 +9,7 @@ interface NextPrayerCardProps {}
 
 const NextPrayerCard: React.FC<NextPrayerCardProps> = ({}) => {
   const [prayer, setPrayer] = useState('');
-  const [time, setTime] = useState(new Date());
+  const [timestamp, setTimestamp] = useState(0);
   const loc = useAppSelector((s) => s.localSlice.location);
 
   const loadPrayer = async () => {
@@ -20,14 +20,14 @@ const NextPrayerCard: React.FC<NextPrayerCardProps> = ({}) => {
     const prayers = parseNextPrayers(prayersRes);
     debug('Prayers', prayers);
     setPrayer(prayers.nextPrayer.name);
-    setTime(new Date(prayers.nextPrayer.timestamp));
+    setTimestamp(prayers.nextPrayer.timestamp);
   };
 
   useEffect(() => {
     loadPrayer();
   }, []);
 
-  return <PrayerCard prayer={prayer} time={dateToShortTime(time)} />;
+  return <PrayerCard prayer={prayer} timestamp={timestamp} />;
 };
 
 export default NextPrayerCard;
