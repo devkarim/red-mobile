@@ -3,6 +3,7 @@ import { getPresentPrayer } from '@src/services/api/prayer';
 import PrayerCard from './PrayerCard';
 import { useAppSelector } from '../../../state/hooks';
 import { dateToShortTime, debug } from '../../../helpers/utils';
+import { parseNextPrayers } from '../../../helpers/parsers/prayer';
 
 interface NextPrayerCardProps {}
 
@@ -14,10 +15,12 @@ const NextPrayerCard: React.FC<NextPrayerCardProps> = ({}) => {
   const loadPrayer = async () => {
     if (!loc) return;
     const { latitude, longitude } = loc.coords;
-    const prayers = await getPresentPrayer(latitude, longitude);
+    const prayersRes = await getPresentPrayer(latitude, longitude);
+    debug('PrayersRes', prayersRes);
+    const prayers = parseNextPrayers(prayersRes);
     debug('Prayers', prayers);
-    setPrayer('Al-Asr');
-    setTime(new Date());
+    setPrayer(prayers.nextPrayer.name);
+    setTime(new Date(prayers.nextPrayer.timestamp));
   };
 
   useEffect(() => {
