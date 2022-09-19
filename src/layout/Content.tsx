@@ -5,7 +5,7 @@ interface ContentProps extends ViewProps {}
 
 const Content: React.FC<ContentProps> = ({ children, style, ...props }) => {
   return (
-    <View style={{ ...tw`p-6`, ...(style as any) }} {...props}>
+    <View style={{ ...tw`p-4`, ...(style as any) }} {...props}>
       {children}
     </View>
   );

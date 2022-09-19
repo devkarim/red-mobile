@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getPresentPrayer } from '@src/services/api/prayer';
 import PrayerCard from './PrayerCard';
 import { useAppSelector } from '../../../state/hooks';
-import { dateToShortTime, debug } from '../../../helpers/utils';
+import { debug } from '../../../helpers/utils';
 import { parseNextPrayers } from '../../../helpers/parsers/prayer';
 
 interface NextPrayerCardProps {}
