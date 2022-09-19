@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FlatList, ScrollView } from 'react-native';
 import LoadingScreen from '../../components/screens/LoadingScreen';
 import Txt from '../../components/ui/Txt';
 import PrayerCard from '../../features/prayers/components/PrayerCard';
@@ -35,7 +36,7 @@ const AllPrayerScreen = () => {
   const nextPrayer = prayers.nextPrayer;
 
   return (
-    <SafeArea>
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
       <Content>
         <Txt style={tw`font-extrabold text-4xl`}>Up Next</Txt>
         <Space />
@@ -43,6 +44,7 @@ const AllPrayerScreen = () => {
         <Space size="md" />
         <Txt style={tw`font-extrabold text-4xl`}>Later</Txt>
         <Space />
+
         {prayers.allNextPrayers.slice(1).map((p) => {
           return (
             <Container key={p.name}>
@@ -52,7 +54,7 @@ const AllPrayerScreen = () => {
           );
         })}
       </Content>
-    </SafeArea>
+    </ScrollView>
   );
 };
 
