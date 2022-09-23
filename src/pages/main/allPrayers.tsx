@@ -7,7 +7,6 @@ import { parseNextPrayers, Prayers } from '../../helpers/parsers/prayer';
 import { debug } from '../../helpers/utils';
 import Container from '../../layout/Container';
 import Content from '../../layout/Content';
-import SafeArea from '../../layout/SafeArea';
 import Space from '../../layout/Space';
 import tw from '../../lib/tailwind';
 import { getPresentPrayer } from '../../services/api/prayer';
