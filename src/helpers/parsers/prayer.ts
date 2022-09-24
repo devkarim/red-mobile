@@ -21,7 +21,7 @@ export const parseNextPrayers = (prayersRes: PrayerResponse): Prayers => {
   }
   return {
     nextPrayer: allNextPrayers[0],
-    allNextPrayers,
+    allNextPrayers: allNextPrayers.slice(0, 5),
     allPreviousPrayers,
     otherTimings: [
       ...prayersToday.otherTimings,
