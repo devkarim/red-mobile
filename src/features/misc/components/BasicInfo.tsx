@@ -36,7 +36,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({}) => {
 
   useEffect(() => {
     loadLocation();
-  }, []);
+  }, [loc]);
 
   return (
     <Container style={tw`flex-row justify-between items-center`}>

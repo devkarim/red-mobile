@@ -14,9 +14,11 @@ export const dateToTime = (date: Date) => {
 };
 
 export const getReadableDate = (date: Date) => {
-  const month = date.toLocaleDateString('en-US', {
-    month: 'short',
-  });
+  const month = date
+    .toLocaleDateString('default', {
+      month: 'long',
+    })
+    .slice(0, 3);
   return `${month} ${date.getDate()}, ${date.getFullYear()}`;
 };
 

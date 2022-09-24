@@ -28,7 +28,7 @@ const AllPrayerScreen = () => {
 
   useEffect(() => {
     loadPrayers();
-  }, []);
+  }, [loc]);
 
   if (!prayers) return <LoadingScreen />;
 

@@ -25,7 +25,7 @@ const NextPrayerCard: React.FC<NextPrayerCardProps> = ({}) => {
 
   useEffect(() => {
     loadPrayer();
-  }, []);
+  }, [loc]);
 
   return <PrayerCard prayer={prayer} timestamp={timestamp} />;
 };
