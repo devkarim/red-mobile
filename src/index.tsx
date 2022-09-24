@@ -8,6 +8,15 @@ import store from './state/store';
 import { StatusBar, useColorScheme } from 'react-native';
 import { lightTheme, darkTheme } from './config/theme';
 
+import { I18nManager } from 'react-native';
+/*
+  Forces the application to be Left-To-Right (LTR).
+
+  TODO: Remove when more languages are supported.
+*/
+I18nManager.forceRTL(false);
+I18nManager.allowRTL(false);
+
 const Stack = createNativeStackNavigator();
 
 const Root = () => {
