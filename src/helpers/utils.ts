@@ -1,4 +1,20 @@
 import { __dev__ } from './../config/constants';
+
+export const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 export const dateToShortTime = (date: Date) => {
   return date.toLocaleTimeString('en-US', {
     hour: '2-digit',
@@ -14,11 +30,7 @@ export const dateToTime = (date: Date) => {
 };
 
 export const getReadableDate = (date: Date) => {
-  const month = date
-    .toLocaleDateString('default', {
-      month: 'long',
-    })
-    .slice(0, 3);
+  const month = monthNames[date.getMonth()].slice(0, 3);
   return `${month} ${date.getDate()}, ${date.getFullYear()}`;
 };
 
