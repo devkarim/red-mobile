@@ -12,6 +12,10 @@ To get started, do the following:
 2. Install all required dependencies via `yarn`
 3. Start development server with `yarn start`
 
+## See also
+
+- [Backend](https://github.com/devkarim/red-server)
+
 ## License
 
 Under [MIT](https://github.com/devkarim/red-mobile/blob/main/LICENSE.md) license.
