@@ -22,7 +22,9 @@ const MainScreen = () => {
         headerTitle:
           Platform.OS == 'ios'
             ? () => (
-                <View style={tw`flex flex-row items-center justify-center`}>
+                <View
+                  style={tw`flex flex-row items-center justify-center center`}
+                >
                   <Txt
                     style={tw`text-primary font-black text-xl tracking-widest pb-2 -ml-3`}
                   >
@@ -31,8 +33,8 @@ const MainScreen = () => {
                 </View>
               )
             : undefined,
-        tabBarStyle: tw`rounded-2xl bg-primary-dark h-20 my-6 mx-4`,
-        tabBarItemStyle: tw`mt-[25&]`,
+        tabBarStyle: tw`flex-col rounded-2xl bg-primary-dark h-20 my-6 mx-4`,
+        tabBarItemStyle: tw`h-20`,
         headerShown: false,
         tabBarActiveTintColor: Palette.DARK,
         tabBarInactiveTintColor: Palette.INACTIVE_DARK,
