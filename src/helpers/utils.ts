@@ -15,18 +15,31 @@ export const monthNames = [
   'December',
 ];
 
+/**
+ * Thanks to https://stackoverflow.com/a/8888498/9746922
+ */
+export const format12h = (date: Date, showSeconds: boolean = false) => {
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  let hoursStr = hours < 10 ? '0' + hours : hours;
+  let minutesStr = minutes < 10 ? '0' + minutes : minutes;
+  let secondsStr = seconds < 10 ? '0' + seconds : seconds;
+  let strTime = `${hoursStr}:${minutesStr}${
+    showSeconds ? ':' + secondsStr : ''
+  } ${ampm}`;
+  return strTime;
+};
+
 export const dateToShortTime = (date: Date) => {
-  return date.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: true,
-  });
+  return format12h(date);
 };
 
 export const dateToTime = (date: Date) => {
-  return date.toLocaleTimeString('en-US', {
-    hour12: true,
-  });
+  return format12h(date, true);
 };
 
 export const getReadableDate = (date: Date) => {
