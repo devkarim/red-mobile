@@ -30,10 +30,8 @@ export const getRemainingTime = (dateFuture: number, dateNow: number) => {
   delta -= hours * 3600;
   const minutes = Math.floor(delta / 60) % 60;
   delta -= minutes * 60;
-  const seconds = Math.floor(delta % 60);
-  return `${hours ? hours + 'h, ' : ''}${minutes ? minutes + 'm, ' : ''}${
-    seconds ? seconds + 's' : ''
-  }`;
+  // const seconds = Math.floor(delta % 60);
+  return `${hours ? hours + 'h, ' : ''}${minutes ? minutes + 'm' : ''}`;
 };
 
 export const log = (

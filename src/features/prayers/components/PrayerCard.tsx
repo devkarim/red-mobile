@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Card from '../../../components/ui/Card';
 import Txt from '../../../components/ui/Txt';
 import { dateToShortTime, getRemainingTime } from '../../../helpers/utils';
@@ -11,7 +12,17 @@ interface PrayerCardProps {
 
 const PrayerCard: React.FC<PrayerCardProps> = ({ prayer, timestamp }) => {
   const date = new Date(timestamp);
-  const timestampNow = Date.now();
+  const [remainingTime, setRemainingTime] = useState('');
+
+  useEffect(() => {
+    const timestampNow = Date.now();
+
+    const timer = setTimeout(() => {
+      setRemainingTime(getRemainingTime(timestamp, timestampNow));
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
 
   return (
     <Card style={tw`flex-row items-center justify-between bg-primary-dark`}>
@@ -19,7 +30,7 @@ const PrayerCard: React.FC<PrayerCardProps> = ({ prayer, timestamp }) => {
       <Container>
         <Txt style={tw`font-medium text-xl`}>{dateToShortTime(date)}</Txt>
         <Txt style={tw`font-light text-xs text-inactive-light`}>
-          {getRemainingTime(timestamp, timestampNow)} remaining
+          {remainingTime} remaining
         </Txt>
       </Container>
     </Card>

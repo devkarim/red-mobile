@@ -24,7 +24,7 @@ const SplashScreen = () => {
       LAST_UPDATED_STORAGE_KEY,
     ]);
     const timestampNow = Date.now();
-    const lastUpdatedAt = Number.MAX_VALUE;
+    const lastUpdatedAt = parseInt(lastUpdated[1] || '0');
 
     debug('Get loc from storage', loc);
     debug('Get lastUpdated from storage', lastUpdated);
