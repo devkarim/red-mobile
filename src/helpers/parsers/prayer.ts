@@ -6,7 +6,9 @@ export interface Prayers {
 }
 
 export const parseNextPrayers = (prayersRes: PrayerResponse): Prayers => {
-  const allPrayers = prayersRes.prayers;
+  const prayersToday = prayersRes.prayersToday;
+  const prayersTomorrow = prayersRes.prayersTomorrow;
+  const allPrayers = [...prayersToday.prayers, ...prayersTomorrow.prayers];
   const allNextPrayers: Prayer[] = [];
   const allPreviousPrayers: Prayer[] = [];
   const timestampNow = Date.now();
@@ -21,6 +23,9 @@ export const parseNextPrayers = (prayersRes: PrayerResponse): Prayers => {
     nextPrayer: allNextPrayers[0],
     allNextPrayers,
     allPreviousPrayers,
-    otherTimings: prayersRes.otherTimings,
+    otherTimings: [
+      ...prayersToday.otherTimings,
+      ...prayersTomorrow.otherTimings,
+    ],
   };
 };

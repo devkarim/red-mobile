@@ -40,9 +40,9 @@ const BasicInfo: React.FC<BasicInfoProps> = ({}) => {
 
   return (
     <Container style={tw`flex-row justify-between items-center`}>
-      <Txt style={tw`font-extrabold text-4xl`}>{city}</Txt>
+      <Txt style={tw`font-extrabold text-3xl`}>{city}</Txt>
       <Container>
-        <Txt style={tw`font-bold text-2xl`}>{currentTime}</Txt>
+        <Txt style={tw`font-bold text-xl`}>{currentTime}</Txt>
         <Txt style={tw`font-bold text-sm`}>{currentDate}</Txt>
       </Container>
     </Container>

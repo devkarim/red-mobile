@@ -12,6 +12,7 @@ import { saveLocation } from '../state/reducers/local';
 import * as Location from 'expo-location';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LAST_UPDATED_STORAGE_KEY, LOC_STORAGE_KEY } from '../config/storage';
+import { __dev__ } from '../config/constants';
 
 const SplashScreen = () => {
   const { replaceTimeout } = useStackNavigation();
@@ -55,7 +56,7 @@ const SplashScreen = () => {
 
   const load = async () => {
     await fetchLocation();
-    replaceTimeout('/main', __DEV__ ? 1000 : 2000);
+    replaceTimeout('/main', __dev__ ? 1000 : 2000);
   };
 
   useEffect(() => {

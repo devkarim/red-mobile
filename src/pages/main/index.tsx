@@ -31,7 +31,7 @@ const MainScreen = () => {
                 </View>
               )
             : undefined,
-        tabBarStyle: tw`rounded-2xl bg-primary-dark my-8 mx-4`,
+        tabBarStyle: tw`rounded-2xl bg-primary-dark h-20 my-6 mx-4`,
         tabBarItemStyle: tw`mt-[25&]`,
         headerShown: false,
         tabBarActiveTintColor: Palette.DARK,

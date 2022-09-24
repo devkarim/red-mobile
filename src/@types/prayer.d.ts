@@ -3,7 +3,12 @@ interface Prayer {
   timestamp: number;
 }
 
-interface PrayerResponse {
+interface PrayerData {
   prayers: Prayer[];
   otherTimings: Prayer[];
+}
+
+interface PrayerResponse {
+  prayersToday: PrayerData;
+  prayersTomorrow: PrayerData;
 }

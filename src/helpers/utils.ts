@@ -1,3 +1,4 @@
+import { __dev__ } from './../config/constants';
 export const dateToShortTime = (date: Date) => {
   return date.toLocaleTimeString('en-US', {
     hour: '2-digit',
@@ -13,7 +14,7 @@ export const dateToTime = (date: Date) => {
 };
 
 export const getReadableDate = (date: Date) => {
-  const month = date.toLocaleDateString('default', {
+  const month = date.toLocaleDateString('en-US', {
     month: 'short',
   });
   return `${month} ${date.getDate()}, ${date.getFullYear()}`;

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import SplashScreen from './pages/splash';
 import MainScreen from './pages/main';
 import store from './state/store';
-import { useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { lightTheme, darkTheme } from './config/theme';
 
 const Stack = createNativeStackNavigator();
@@ -28,6 +28,7 @@ const Root = () => {
 
   return (
     <Provider store={store}>
+      <StatusBar />
       <NavigationContainer
         theme={colorScheme == 'dark' ? darkTheme : lightTheme}
       >
