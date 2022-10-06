@@ -12,7 +12,7 @@ import { useAppSelector } from '../../state/hooks';
 
 const AllPrayerScreen = () => {
   const loc = useAppSelector((s) => s.localSlice.location);
-  const { isLoading, prayers } = usePresentPrayers(loc);
+  const { prayers } = usePresentPrayers(loc);
 
   if (!prayers) return <LoadingScreen />;
 

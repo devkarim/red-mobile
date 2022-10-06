@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
-import { getPresentPrayer } from '@src/services/api/prayer';
+import { useState } from 'react';
 import PrayerCard from './PrayerCard';
 import { useAppSelector } from '../../../state/hooks';
-import { debug } from '../../../helpers/utils';
-import { parseNextPrayers } from '../../../helpers/parsers/prayer';
 import usePresentPrayers from '../hooks/usePresentPrayers';
 
 interface NextPrayerCardProps {}
@@ -11,7 +8,7 @@ interface NextPrayerCardProps {}
 const NextPrayerCard: React.FC<NextPrayerCardProps> = ({}) => {
   const [timestamp, setTimestamp] = useState(0);
   const loc = useAppSelector((s) => s.localSlice.location);
-  const { isLoading, prayers } = usePresentPrayers(loc);
+  const { prayers } = usePresentPrayers(loc);
 
   if (!prayers) return <></>;
 
