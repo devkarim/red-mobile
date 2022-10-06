@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PrayerCard from './PrayerCard';
 import { useAppSelector } from '../../../state/hooks';
 import usePresentPrayers from '../hooks/usePresentPrayers';

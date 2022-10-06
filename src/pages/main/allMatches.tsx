@@ -23,10 +23,11 @@ const AllMatchesScreen = () => {
               return (
                 <Container key={index}>
                   <MatchCard
-                    homeTeam={m.homeTeam.name}
-                    awayTeam={m.awayTeam.name}
+                    homeTeam={m.homeTeam}
+                    awayTeam={m.awayTeam}
                     league={l.league}
                     score={m.score}
+                    utcDate={m.utcDate}
                   />
                   <Space />
                 </Container>

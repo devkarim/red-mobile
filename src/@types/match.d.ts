@@ -91,3 +91,5 @@ interface LeagueMatchesToday {
   date: string;
   matches: MatchToday[];
 }
+
+type TeamKey = 'homeTeam' | 'awayTeam';
