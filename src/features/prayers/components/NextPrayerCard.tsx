@@ -6,13 +6,16 @@ import usePresentPrayers from '../hooks/usePresentPrayers';
 interface NextPrayerCardProps {}
 
 const NextPrayerCard: React.FC<NextPrayerCardProps> = ({}) => {
-  const [timestamp, setTimestamp] = useState(0);
   const loc = useAppSelector((s) => s.localSlice.location);
   const { prayers } = usePresentPrayers(loc);
 
   if (!prayers) return <></>;
 
-  return <PrayerCard prayer={prayers.nextPrayer.name} timestamp={timestamp} />;
+  const { nextPrayer } = prayers;
+
+  return (
+    <PrayerCard prayer={nextPrayer.name} timestamp={nextPrayer.timestamp} />
+  );
 };
 
 export default NextPrayerCard;
