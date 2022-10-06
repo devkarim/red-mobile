@@ -4,30 +4,18 @@ import PrayerCard from './PrayerCard';
 import { useAppSelector } from '../../../state/hooks';
 import { debug } from '../../../helpers/utils';
 import { parseNextPrayers } from '../../../helpers/parsers/prayer';
+import usePresentPrayers from '../hooks/usePresentPrayers';
 
 interface NextPrayerCardProps {}
 
 const NextPrayerCard: React.FC<NextPrayerCardProps> = ({}) => {
-  const [prayer, setPrayer] = useState('');
   const [timestamp, setTimestamp] = useState(0);
   const loc = useAppSelector((s) => s.localSlice.location);
+  const { isLoading, prayers } = usePresentPrayers(loc);
 
-  const loadPrayer = async () => {
-    if (!loc) return;
-    const { latitude, longitude } = loc.coords;
-    const prayersRes = await getPresentPrayer(latitude, longitude);
-    debug('PrayersRes', prayersRes);
-    const prayers = parseNextPrayers(prayersRes);
-    debug('Prayers', prayers);
-    setPrayer(prayers.nextPrayer.name);
-    setTimestamp(prayers.nextPrayer.timestamp);
-  };
+  if (!prayers) return <></>;
 
-  useEffect(() => {
-    loadPrayer();
-  }, [loc]);
-
-  return <PrayerCard prayer={prayer} timestamp={timestamp} />;
+  return <PrayerCard prayer={prayers.nextPrayer.name} timestamp={timestamp} />;
 };
 
 export default NextPrayerCard;

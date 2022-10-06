@@ -1,34 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList, ScrollView } from 'react-native';
+import React from 'react';
+import { ScrollView } from 'react-native';
 import LoadingScreen from '../../components/screens/LoadingScreen';
 import Txt from '../../components/ui/Txt';
 import PrayerCard from '../../features/prayers/components/PrayerCard';
-import { parseNextPrayers, Prayers } from '../../helpers/parsers/prayer';
-import { debug } from '../../helpers/utils';
+import usePresentPrayers from '../../features/prayers/hooks/usePresentPrayers';
 import Container from '../../layout/Container';
 import Content from '../../layout/Content';
 import Space from '../../layout/Space';
 import tw from '../../lib/tailwind';
-import { getPresentPrayer } from '../../services/api/prayer';
 import { useAppSelector } from '../../state/hooks';
 
 const AllPrayerScreen = () => {
-  const [prayers, setPrayers] = useState<Prayers | null>(null);
   const loc = useAppSelector((s) => s.localSlice.location);
-
-  const loadPrayers = async () => {
-    if (!loc) return;
-    const { latitude, longitude } = loc.coords;
-    const prayersRes = await getPresentPrayer(latitude, longitude);
-    debug('PrayersRes', prayersRes);
-    const prayers = parseNextPrayers(prayersRes);
-    debug('Prayers', prayers);
-    setPrayers(prayers);
-  };
-
-  useEffect(() => {
-    loadPrayers();
-  }, [loc]);
+  const { isLoading, prayers } = usePresentPrayers(loc);
 
   if (!prayers) return <LoadingScreen />;
 

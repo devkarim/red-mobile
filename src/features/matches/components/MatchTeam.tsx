@@ -1,4 +1,4 @@
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
 import Txt from '../../../components/ui/Txt';
 import Container from '../../../layout/Container';
 import tw from '../../../lib/tailwind';
