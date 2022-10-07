@@ -22,7 +22,6 @@ export const parsePrayers = (prayers: Prayer[]) => {
 export const parseNextPrayers = (prayersRes: PrayerResponse): Prayers => {
   const prayersToday = prayersRes.prayersToday;
   const prayersTomorrow = prayersRes.prayersTomorrow;
-  // const allPrayers = prayersToday.prayers;
   const allPrayers = {
     today: parsePrayers(prayersToday.prayers),
     tomorrow: parsePrayers(prayersTomorrow.prayers),
@@ -32,6 +31,7 @@ export const parseNextPrayers = (prayersRes: PrayerResponse): Prayers => {
   const nextPrayers =
     nextPrayersToday.length > 1 ? nextPrayersToday : nextPrayersTomorrow;
   const allPreviousPrayers = allPrayers.today.previousPrayers;
+  if (nextPrayersToday.length == 1) nextPrayers.unshift(nextPrayersToday[0]);
   return {
     nextPrayer: nextPrayers[0],
     allNextPrayers: nextPrayers,
