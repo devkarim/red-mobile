@@ -3,6 +3,8 @@ import { FlatList } from 'react-native';
 import LoadingScreen from '../../components/screens/LoadingScreen';
 import Txt from '../../components/ui/Txt';
 import MatchCard from '../../features/matches/components/MatchCard';
+import parseMatchesRes from '../../helpers/parsers/parseMatches';
+import { dateToISO, debug } from '../../helpers/utils';
 import Container from '../../layout/Container';
 import Content from '../../layout/Content';
 import SafeArea from '../../layout/SafeArea';
@@ -11,13 +13,13 @@ import tw from '../../lib/tailwind';
 import { getMatchesNow } from '../../services/api/match';
 
 const AllMatchesScreen = () => {
-  const [allMatches, setAllMatches] = useState<LeagueMatchesToday[] | null>(
-    null
-  );
+  const [allMatches, setAllMatches] = useState<DateMatches | null>(null);
 
   const loadAllMatches = async () => {
     const matches = await getMatchesNow();
-    setAllMatches(matches);
+    debug('MatchesRes', matches);
+    setAllMatches(parseMatchesRes(matches));
+    debug('ParsedMatchesRes', parseMatchesRes(matches));
   };
 
   useEffect(() => {
@@ -30,27 +32,36 @@ const AllMatchesScreen = () => {
     <SafeArea>
       <Content>
         <Space />
-        <Txt style={tw`font-extrabold text-5xl`}>Today</Txt>
-        {allMatches.map((l) => (
-          <FlatList
-            key={l.league}
-            data={l.matches}
-            renderItem={({ item: m, index }) => {
-              return (
-                <Container key={index}>
-                  <MatchCard
-                    homeTeam={m.homeTeam}
-                    awayTeam={m.awayTeam}
-                    league={l.league}
-                    score={m.score}
-                    utcDate={m.utcDate}
-                  />
-                  <Space />
-                </Container>
-              );
-            }}
-          />
-        ))}
+        {Object.keys(allMatches).map((d) => {
+          const matches = allMatches[d];
+          const todayISO = dateToISO(new Date());
+          const isToday = todayISO == d;
+
+          return (
+            <FlatList
+              key={d}
+              data={matches}
+              renderItem={({ item: m, index }) => {
+                return (
+                  <Container key={index}>
+                    <Txt style={tw`font-extrabold text-3xl`}>
+                      {isToday ? 'Today' : d}
+                    </Txt>
+                    <Space />
+                    <MatchCard
+                      homeTeam={m.homeTeam}
+                      awayTeam={m.awayTeam}
+                      league={m.competition.name}
+                      score={m.score}
+                      utcDate={m.utcDate}
+                    />
+                    <Space />
+                  </Container>
+                );
+              }}
+            />
+          );
+        })}
       </Content>
     </SafeArea>
   );

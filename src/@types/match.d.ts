@@ -1,40 +1,42 @@
-interface MatchesResponse {
-  count: number;
-  filters: Filters;
-  competition: Competition;
-  matches: Match[];
-}
-
-interface Filters {}
-
 interface Competition {
   id: number;
-  area: Area;
   name: string;
   code: string;
-  plan: string;
+  type: string;
+  emblem: string;
+}
+
+interface Match {
+  area: Area;
+  competition: Competition;
+  season: Season;
+  id: number;
+  utcDate: string;
+  status: MatchStatus;
+  minute: string;
+  injuryTime: number;
+  attendance?: number;
+  venue?: string;
+  matchday: number;
+  stage: string;
+  group: any;
   lastUpdated: string;
+  homeTeam: Team;
+  awayTeam: Team;
+  score: Score;
+  goals: Goal[];
+  penalties: Penalty[];
+  bookings: any[];
+  substitutions: any[];
+  odds: Odds;
+  referees: Referee[];
 }
 
 interface Area {
   id: number;
   name: string;
-}
-
-interface Match {
-  id: number;
-  season: Season;
-  utcDate: string;
-  status: MatchStatus;
-  matchday?: number | null;
-  stage: string;
-  group?: string | null;
-  lastUpdated: string;
-  odds: Odds;
-  score: Score;
-  homeTeam: Team;
-  awayTeam: Team;
-  referees: Referee[];
+  code: string;
+  flag: string;
 }
 
 interface Season {
@@ -42,35 +44,94 @@ interface Season {
   startDate: string;
   endDate: string;
   currentMatchday: number;
+  winner: any;
+  stages: string[];
 }
 
-interface Odds {
-  msg: string;
-}
-
-interface Score {
-  winner?: string;
-  duration: string;
-  fullTime: TimeScore;
-  halfTime: TimeScore;
-  extraTime: TimeScore;
-  penalties: TimeScore;
-}
-
-interface TimeScore {
-  homeTeam?: number | null;
-  awayTeam?: number | null;
+interface Coach {
+  id?: number;
+  name?: string;
+  nationality?: string;
 }
 
 interface Team {
   id: number;
   name: string;
+  shortName: string;
+  tla: string;
+  crest: string;
+  coach: Coach;
+  leagueRank: number;
+  formation: string;
+  lineup: any[];
+  bench: any[];
+}
+
+interface Score {
+  winner: string;
+  duration: string;
+  fullTime: MatchTime;
+  halfTime: MatchTime;
+  extraTime: MatchTime;
+  penalties: MatchTime;
+}
+
+interface MatchTime {
+  home: number;
+  away: number;
+}
+interface Goal {
+  minute: number;
+  injuryTime?: number;
+  type: string;
+  team: GoalTeam;
+  scorer: Scorer;
+  assist?: Assist;
+  score: GoalScore;
+}
+
+interface GoalTeam {
+  id: number;
+  name: string;
+}
+
+interface Scorer {
+  id: number;
+  name: string;
+}
+
+interface Assist {
+  id: number;
+  name: string;
+}
+
+interface GoalScore {
+  home: number;
+  away: number;
+}
+
+interface Penalty {
+  player: Player;
+  team: GoalTeam;
+  scored: boolean;
+  score?: GoalScore;
+}
+
+interface Player {
+  id: number;
+  name: string;
+}
+
+interface Odds {
+  homeWin: number;
+  draw: number;
+  awayWin: number;
 }
 
 interface Referee {
   id: number;
   name: string;
-  role: string;
+  type: string;
   nationality?: string;
 }
 
@@ -84,12 +145,13 @@ type MatchStatus =
   | 'SUSPENDED'
   | 'CANCELLED';
 
-interface MatchToday extends Match {}
-
-interface LeagueMatchesToday {
-  league: string;
+interface LeagueMatches {
+  league: Competition;
   date: string;
-  matches: MatchToday[];
+  matches: Match[];
 }
 
+type DateMatches = { [key: string]: Match[] };
+
 type TeamKey = 'homeTeam' | 'awayTeam';
+type ScoreTeamKey = 'home' | 'away';

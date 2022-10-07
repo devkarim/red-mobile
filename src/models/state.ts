@@ -1,5 +1,5 @@
 import { LocationObject } from 'expo-location';
-import { Prayers } from '../helpers/parsers/prayer';
+import { Prayers } from '../helpers/parsers/parseNextPrayers';
 
 export interface LocalState {
   token: string | null;

@@ -1,4 +1,4 @@
-import { Prayers } from './../../helpers/parsers/prayer';
+import { Prayers } from '../../helpers/parsers/parseNextPrayers';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CacheState } from '../../models/state';
 

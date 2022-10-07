@@ -1,7 +1,10 @@
 import { useAppDispatch } from '@src/state/hooks';
 import { LocationObject } from 'expo-location';
 import { useEffect, useState } from 'react';
-import { parseNextPrayers, Prayers } from '@src/helpers/parsers/prayer';
+import {
+  parseNextPrayers,
+  Prayers,
+} from '@src/helpers/parsers/parseNextPrayers';
 import { debug } from '@src/helpers/utils';
 import { getPresentPrayer } from '@src/services/api/prayer';
 import { useAppSelector } from '@src/state/hooks';

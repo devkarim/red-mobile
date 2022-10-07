@@ -47,6 +47,10 @@ export const getReadableDate = (date: Date) => {
   return `${month} ${date.getDate()}, ${date.getFullYear()}`;
 };
 
+export const dateToISO = (date: Date) => {
+  return date.toISOString().split('T')[0];
+};
+
 /**
  * Thanks to https://stackoverflow.com/a/13904120/9746922
  */
@@ -58,8 +62,11 @@ export const getRemainingTime = (dateFuture: number, dateNow: number) => {
   delta -= hours * 3600;
   const minutes = Math.floor(delta / 60) % 60;
   delta -= minutes * 60;
-  // const seconds = Math.floor(delta % 60);
-  return `${hours ? hours + 'h' : ''}${minutes ? ', ' + minutes + 'm' : ''}`;
+  const seconds = Math.floor(delta % 60);
+  if (!hours && !minutes) return `${seconds}s`;
+  return `${hours ? hours + 'h' : ''}${
+    minutes ? (hours ? ', ' : '') + minutes + 'm' : ''
+  }`;
 };
 
 export const log = (

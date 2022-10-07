@@ -6,7 +6,7 @@ import Container from '@src/layout/Container';
 import HSpace from '@src/layout/HSpace';
 import Space from '@src/layout/Space';
 import MatchTeam from './MatchTeam';
-import { parseScore } from '../../../helpers/parsers/match';
+import { parseScore } from '../../../helpers/parsers/parseMatches';
 
 interface MatchCardProps {
   homeTeam: Team;
@@ -25,35 +25,30 @@ const MatchCard: React.FC<MatchCardProps> = ({
 }) => {
   const date = new Date(utcDate);
   const finalScore = parseScore(score);
+  const finalLeagueName = league == 'Primera Division' ? 'LaLiga' : league;
 
   return (
     <Card style={tw`flex w-full items-center justify-center bg-primary-dark`}>
       <Txt style={tw`font-bold text-xs`}>0 Interested</Txt>
-      <Txt style={tw`font-bold text-xs opacity-50`}>{league}</Txt>
+      <Txt style={tw`font-bold text-xs opacity-50`}>{finalLeagueName}</Txt>
       <Space size="sm" />
       <Container style={tw`flex-row`}>
-        <MatchTeam
-          imgUrl={`https://crests.football-data.org/${homeTeam.id}.png`}
-          name={homeTeam.name}
-        />
+        <MatchTeam imgUrl={homeTeam.crest} name={homeTeam.name} />
         <Container style={tw`items-center flex-grow`}>
           <Container style={tw`flex-row mb-2`}>
             <Txt style={tw`font-black text-4xl text-center`}>
-              {finalScore.homeTeam}
+              {finalScore.homeTeam ?? '-'}
             </Txt>
             <HSpace />
             <Txt style={tw`font-black text-4xl text-center`}>
-              {finalScore.awayTeam}
+              {finalScore.awayTeam ?? '-'}
             </Txt>
           </Container>
           <Txt style={tw`font-bold text-xs opacity-50`}>
             {dateToShortTime(date)}
           </Txt>
         </Container>
-        <MatchTeam
-          imgUrl={`https://crests.football-data.org/${awayTeam.id}.png`}
-          name={awayTeam.name}
-        />
+        <MatchTeam imgUrl={awayTeam.crest} name={awayTeam.name} />
       </Container>
     </Card>
   );
