@@ -1,7 +1,6 @@
 {
   "name": "red-mobile",
   "version": "1.0.0",
-  "private": true,
   "description": "Red Mobile is an assistant to keep you reminded and help with daily tasks.",
   "author": {
     "name": "devkarim",
