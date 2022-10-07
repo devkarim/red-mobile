@@ -33,7 +33,7 @@ const PrayerCard: React.FC<PrayerCardProps> = ({ prayer, timestamp }) => {
         <Txt style={tw`font-medium text-xl text-white`}>
           {dateToShortTime(date)}
         </Txt>
-        <Txt style={tw`font-light text-xs text-inactive-light text-white`}>
+        <Txt style={tw`font-light text-xs text-inactive-light`}>
           {remainingTime} remaining
         </Txt>
       </Container>
