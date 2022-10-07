@@ -24,9 +24,8 @@ const BasicInfo: React.FC<BasicInfoProps> = ({}) => {
   };
 
   useEffect(() => {
-    const date = new Date();
-
     const timer = setTimeout(() => {
+      const date = new Date();
       setCurrentTime(dateToTime(date));
       setCurrentDate(getReadableDate(date));
     }, 1000);

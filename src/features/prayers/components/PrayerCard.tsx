@@ -15,9 +15,8 @@ const PrayerCard: React.FC<PrayerCardProps> = ({ prayer, timestamp }) => {
   const [remainingTime, setRemainingTime] = useState('');
 
   useEffect(() => {
-    const timestampNow = Date.now();
-
     const timer = setTimeout(() => {
+      const timestampNow = Date.now();
       setRemainingTime(getRemainingTime(timestamp, timestampNow));
     }, 1000);
 
