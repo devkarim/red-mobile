@@ -28,23 +28,25 @@ const MatchCard: React.FC<MatchCardProps> = ({
   const finalLeagueName = league == 'Primera Division' ? 'LaLiga' : league;
 
   return (
-    <Card style={tw`flex w-full items-center justify-center bg-primary-dark`}>
-      <Txt style={tw`font-bold text-xs`}>0 Interested</Txt>
-      <Txt style={tw`font-bold text-xs opacity-50`}>{finalLeagueName}</Txt>
+    <Card style={tw`flex w-full items-center justify-center bg-match-dark`}>
+      <Txt style={tw`font-bold text-xs text-white`}>0 Interested</Txt>
+      <Txt style={tw`font-bold text-xs opacity-50 text-white`}>
+        {finalLeagueName}
+      </Txt>
       <Space size="sm" />
       <Container style={tw`flex-row`}>
         <MatchTeam imgUrl={homeTeam.crest} name={homeTeam.name} />
         <Container style={tw`items-center flex-grow`}>
           <Container style={tw`flex-row mb-2`}>
-            <Txt style={tw`font-black text-4xl text-center`}>
+            <Txt style={tw`font-black text-4xl text-center text-white`}>
               {finalScore.homeTeam ?? '-'}
             </Txt>
             <HSpace />
-            <Txt style={tw`font-black text-4xl text-center`}>
+            <Txt style={tw`font-black text-4xl text-center text-white`}>
               {finalScore.awayTeam ?? '-'}
             </Txt>
           </Container>
-          <Txt style={tw`font-bold text-xs opacity-50`}>
+          <Txt style={tw`font-bold text-xs opacity-50 text-white`}>
             {dateToShortTime(date)}
           </Txt>
         </Container>

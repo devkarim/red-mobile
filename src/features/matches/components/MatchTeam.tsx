@@ -16,7 +16,7 @@ const MatchTeam: React.FC<MatchTeamProps> = ({ imgUrl, name }) => {
     <Container style={tw`items-center w-[40%]`}>
       {!isSvg && <Image source={{ uri: imgUrl }} style={tw`w-12 h-12 mb-2`} />}
       {isSvg && <SvgUri uri={imgUrl} width={64} height={64} style={tw`mb-2`} />}
-      <Txt style={tw`font-bold text-xs`}>{name}</Txt>
+      <Txt style={tw`font-bold text-xs text-white`}>{name}</Txt>
     </Container>
   );
 };

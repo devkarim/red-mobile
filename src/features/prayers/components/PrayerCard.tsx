@@ -28,10 +28,12 @@ const PrayerCard: React.FC<PrayerCardProps> = ({ prayer, timestamp }) => {
     <Card
       style={tw`flex-row w-full items-center justify-between bg-primary-dark`}
     >
-      <Txt style={tw`font-bold text-2xl w-[60%]`}>Al-{prayer}</Txt>
+      <Txt style={tw`font-bold text-2xl w-[60%] text-white`}>Al-{prayer}</Txt>
       <Container style={tw`w-[40%]`}>
-        <Txt style={tw`font-medium text-xl`}>{dateToShortTime(date)}</Txt>
-        <Txt style={tw`font-light text-xs text-inactive-light`}>
+        <Txt style={tw`font-medium text-xl text-white`}>
+          {dateToShortTime(date)}
+        </Txt>
+        <Txt style={tw`font-light text-xs text-inactive-light text-white`}>
           {remainingTime} remaining
         </Txt>
       </Container>
